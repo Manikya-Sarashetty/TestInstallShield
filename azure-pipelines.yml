@@ -7,12 +7,12 @@
 trigger:
 - main
 
-pool:
-  vmImage: windows-latest
+pool: myagent
 
 steps:
-    - task: InstallShieldInstall@1
+    - task: InstallShieldBuild@1
       inputs:
-        ISVersion: '2023'
-        LicType: 'cls'
-        ISLicenseCLS: '6F5XTE6YRV7U'
+        PrjName: 'C:\Users\admin\Desktop\devopstestproject\testdevops.ism'
+        Parameters: '-v -r "IS-RELEASE" -l PATH_TO_INSTALLATIONS_FILES="$(build.artifactstagingdirectory)\Drop" -y "1.2.33"'
+        AgentLoc: 'PrivateAgent'
+        SABPath: 'C:\Program Files (x86)\InstallShield\2023 SAB'
